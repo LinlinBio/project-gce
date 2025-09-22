@@ -1,6 +1,6 @@
 ---
 layout: ../layouts/Layout.astro
-title: Research Project Page Template
+title: Strategies to Optimize Genetic Code Expansion (GCE) Techniques by Reducing Truncated Protein Production
 description: Simple project page template for your research paper, built with Astro and Tailwind CSS
 favicon: favicon.svg
 thumbnail: screenshot-light.png
@@ -24,9 +24,9 @@ import Splat from "../components/Splat.tsx"
 import dogsDiffc from "../assets/dogs-diffc.png"
 import dogsTrue from "../assets/dogs-true.png"
 import fig1 from "../assets/fig1.png"
-import fig2 from "../assets/fig1.png"
-import fig3 from "../assets/fig1.png"
-import fig4 from "../assets/fig1.png"
+import fig2 from "../assets/fig2.png"
+import fig3 from "../assets/fig3.png"
+import fig4 from "../assets/fig4.png"
 
 
 import CodeBlock from "../components/CodeBlock.astro";
@@ -69,21 +69,53 @@ export const components = {pre: CodeBlock, table: Table}
 ## Introduction
 
 <section class="text-justify">
-  Synthetic biology and protein engineering increasingly demand precise regulation of protein structure and function in living cells. Genetic code expansion (GCE) provides a powerful strategy by enabling site-specific incorporation of unnatural amino acids through engineered aminoacyl-tRNA synthetase/tRNA pairs, facilitating protein remodeling and fluorescent labeling.
-
-  However, competition between GCE’s orthogonal translation components and host release factors frequently causes premature termination, leading to truncated proteins and reduced yields of full-length products. This inefficiency has limited the broader utility of GCE in protein engineering and live-cell applications.
-
-  To address this challenge, we developed a eukaryotic expression system that selectively eliminates truncated proteins while preserving complete products. The design integrates an N-terminal degron (DHFR), a C-terminal localization tag, and a reconfigurable split TEV protease, enabling spatial separation and targeted degradation of truncations.
-
-  This approach improved protein fidelity, increasing full-length yields and markedly reducing truncations, with further tunability through small-molecule drugs and alternative localization signals. By enhancing the efficiency of GCE, our system expands its applicability in synthetic biology, particularly for protein engineering and live-cell imaging.
+  <p>
+    Synthetic biology and protein engineering increasingly demand precise regulation of protein structure and function in living cells. Genetic code expansion (GCE) provides a powerful strategy by enabling site-specific incorporation of unnatural amino acids through engineered aminoacyl-tRNA synthetase/tRNA pairs, facilitating protein remodeling and fluorescent labeling.
+  </p>
+  <p>
+    However, competition between GCE’s orthogonal translation components and host release factors frequently causes premature termination, leading to truncated proteins and reduced yields of full-length products. This inefficiency has limited the broader utility of GCE in protein engineering and live-cell applications.
+  </P>
+  <p>
+    To address this challenge, we developed a eukaryotic expression system that selectively eliminates truncated proteins while preserving complete products. The design integrates an N-terminal degron (DHFR), a C-terminal localization tag, and a reconfigurable split TEV protease, enabling spatial separation and targeted degradation of truncations.
+  </p>
+  <p>
+    This approach improved protein fidelity, increasing full-length yields and markedly reducing truncations, with further tunability through small-molecule drugs and alternative localization signals. By enhancing the efficiency of GCE, our system expands its applicability in synthetic biology, particularly for protein engineering and live-cell imaging.
+  </P>
 </section>
 
 ## Methods
-
+### Plasmid Construction
 <section class="text-justify">
-  123
+  <p>
+    To construct the degradation-based circuit, we designed protein sequences containing a degron at the N-terminus, a TEV protease cleavage site, and a localization signal at the C-terminus. For the nuclear localization system, two plasmids were generated:
+    1. NLS-C: DHFR-TRAP-myc-tevs-V5-iRFP-EGFP-tevs-FLAG-NLS-Czipper-CTEV
+    2. NLS-N: Nzipper-NLS-NTEV
+  </p>
+  <p>
+    The degron (mutated E. coli DHFR) promotes ubiquitin-mediated degradation in mammalian cells. The nuclear localization signal (NLS) directs the protein into the nucleus via the importin α pathway. The Czipper/Nzipper leucine zipper sequences mediate dimerization and thereby reconstitute the split TEV protease, enabling site-specific cleavage (Fig. 1).
+  </p>
+  <p>
+    To obtain eukaryotic expression plasmids (pNLS-C and pNLS-N), individual fragments were amplified by PCR with homologous arms and assembled into linearized vectors using Gibson recombination. Constructs were verified by sequencing. Endotoxin-free plasmids were prepared for mammalian cell transfection.
+  </P>
 </section>
 
+### Reporter System for GCE Readthrough Efficiency
+
+<section class="text-justify">
+  To monitor amber suppression efficiency, an iRFP-EGFP fusion reporter was constructed with a TAG mutation at EGFP position 39. In the absence of readthrough, truncated proteins contain only iRFP and emit far-red fluorescence. Successful readthrough produces full-length iRFP-EGFP, which emits both far-red and green fluorescence.
+</section>
+
+### Cell Culture and Transfection
+
+<section class="text-justify">
+HEK293T cells were transiently transfected with pNLS-C, pNLS-N, and the amber suppression system plasmid pcDNA3.1 U6FulltRNA-NES-PylRS(AF) (pPylRS-tRNA). Noncanonical amino acid (BOC) was supplemented as required. For time-controlled degradation experiments, 1 μM Trimethoprim (TMP) was added during medium replacement at 4–6 h post-transfection and removed at defined time intervals before cell collection.
+</section>
+
+### Imaging and Immunoblotting
+
+<section class="text-justify">
+Fluorescence imaging was performed at 24 h post-transfection using live HEK293T cells. Proteins were extracted by RIPA lysis and analyzed by immunoblotting to detect cleavage fragments and quantify the ratio of full-length to truncated proteins.
+</section>
 
 ## Results
 
