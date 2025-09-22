@@ -28,10 +28,10 @@ import fig2 from "../assets/fig2.png"
 import fig3 from "../assets/fig3.png"
 import fig4 from "../assets/fig4.png"
 
-
 import CodeBlock from "../components/CodeBlock.astro";
 import Table from "../components/Table.astro";
 export const components = {pre: CodeBlock, table: Table}
+
 
 <Header
   title={frontmatter.title}
@@ -77,6 +77,9 @@ export const components = {pre: CodeBlock, table: Table}
   </p>
 </section>
 
+
+<HighlightedSection class="text-justify">
+
 ## Methods
 ### Plasmid Construction
 <section class="text-justify">
@@ -100,14 +103,17 @@ export const components = {pre: CodeBlock, table: Table}
 ### Cell Culture and Transfection
 
 <section class="text-justify">
-HEK293T cells were transiently transfected with pNLS-C, pNLS-N, and the amber suppression system plasmid pcDNA3.1 U6FulltRNA-NES-PylRS(AF) (pPylRS-tRNA). Noncanonical amino acid (BOC) was supplemented as required. For time-controlled degradation experiments, 1 μM Trimethoprim (TMP) was added during medium replacement at 4–6 h post-transfection and removed at defined time intervals before cell collection.
+  HEK293T cells were transiently transfected with pNLS-C, pNLS-N, and the amber suppression system plasmid pcDNA3.1 U6FulltRNA-NES-PylRS(AF) (pPylRS-tRNA). Noncanonical amino acid (BOC) was supplemented as required. For time-controlled degradation experiments, 1 μM Trimethoprim (TMP) was added during medium replacement at 4–6 h post-transfection and removed at defined time intervals before cell collection.
 </section>
 
 ### Imaging and Immunoblotting
 
 <section class="text-justify">
-Fluorescence imaging was performed at 24 h post-transfection using live HEK293T cells. Proteins were extracted by RIPA lysis and analyzed by immunoblotting to detect cleavage fragments and quantify the ratio of full-length to truncated proteins.
+  Fluorescence imaging was performed at 24 h post-transfection using live HEK293T cells. Proteins were extracted by RIPA lysis and analyzed by immunoblotting to detect cleavage fragments and quantify the ratio of full-length to truncated proteins.
 </section>
+
+</HighlightedSection>
+
 
 ## Results
 ### Design of the Degradation-Based Circuit
@@ -122,8 +128,10 @@ Fluorescence imaging was performed at 24 h post-transfection using live HEK293T 
 </section>
 
 <Figure>
-  <Image slot="figure" source={fig1} altText="123" />
-  <span slot="caption">123</span>
+  <Image slot="figure" source={fig1} altText="Figure 1. Schematic diagram of the truncation-elimination system." />
+  <div slot="caption">
+    <div>Figure 1. Schematic diagram of the truncation-elimination system.</div>
+  </div>
 </Figure>
 
 ### Correct Localization and Cleavage of Target Proteins
@@ -136,8 +144,12 @@ Fluorescence imaging was performed at 24 h post-transfection using live HEK293T 
 </section>
 
 <Figure>
-  <Image slot="figure" source={fig2} altText="123" />
-  <span slot="caption">123</span>
+  <Image slot="figure" source={fig2} altText="Figure 2. Evaluation of the truncation-elimination system." />
+  <div slot="caption">
+    <div>Figure 2. Evaluation of the truncation-elimination system.</div>
+    a. HEK293T cells were co-transfected with pNLS-C and pNLS-N. At 4–6 h post-transfection, the medium was replaced and supplemented with the unnatural amino acid BOC. Live-cell fluorescence microscopy images were acquired 24 h after transfection. Scale bar = 20 μm.<br/>
+    b & c. HEK293T cells were co-transfected with pNLS-C and pNLS-N. After 24 h, cellular proteins were collected and analyzed by immunoblotting.
+  </div>
 </Figure>
 
 ### Elimination of Truncated Products by Alternative Localization Strategies
@@ -156,8 +168,13 @@ Fluorescence imaging was performed at 24 h post-transfection using live HEK293T 
 </section>
 
 <Figure>
-  <Image slot="figure" source={fig3} altText="123" />
-  <span slot="caption">123</span>
+  <Image slot="figure" source={fig3} altText="Figure 3. Truncation-elimination systems with different localization signals." />
+  <div slot="caption">
+    <div>Figure 3. Truncation-elimination systems with different localization signals.</div>
+    a. Protein sequence designs incorporating distinct localization signals.<br/>
+    b. HEK293T cells were transfected with plasmids corresponding to different truncation-elimination systems. At 4–6 h post-transfection, the medium was replaced and supplemented with BOC. Cellular proteins were harvested 24 h later and analyzed by immunoblotting.<br/>
+    c & d. Quantification of bands shown in Fig. 3b.
+  </div>
 </Figure>
 
 ### Temporal Regulation of Cleavage and Degradation Enhances Efficiency
@@ -170,7 +187,11 @@ Fluorescence imaging was performed at 24 h post-transfection using live HEK293T 
 
 <Figure>
   <Image slot="figure" source={fig4} altText="123" />
-  <span slot="caption">123</span>
+  <div slot="caption">
+    <div>Figure 4. Optimization of truncation-elimination efficiency using TMP.</div>
+      a. HEK293T cells were co-transfected with pNLS-C and pNLS-N. At 4–6 h post-transfection, the medium was replaced and supplemented with BOC and TMP. After 24 h, cellular proteins were harvested, with TMP removed at different time points prior to sampling.<br/>
+      b. Quantification of bands shown in Fig. 4a.
+  </div>
 </Figure>
 
 ## BibTeX citation
