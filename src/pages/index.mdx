@@ -69,7 +69,7 @@ export const components = {pre: CodeBlock, table: Table}
 ## Introduction
 
 <section class="text-justify">
-    Synthetic biology and protein engineering increasingly demand precise regulation of protein structure and function in living cells. Genetic code expansion (GCE) provides a powerful strategy by enabling site-specific incorporation of unnatural amino acids through engineered aminoacyl-tRNA synthetase/tRNA pairs, facilitating protein remodeling and fluorescent labeling.
+  Synthetic biology and protein engineering increasingly demand precise regulation of protein structure and function in living cells. Genetic code expansion (GCE) provides a powerful strategy by enabling site-specific incorporation of unnatural amino acids through engineered aminoacyl-tRNA synthetase/tRNA pairs, facilitating protein remodeling and fluorescent labeling.
   <p class="mt-4">
     However, competition between GCE’s orthogonal translation components and host release factors frequently causes premature termination, leading to truncated proteins and reduced yields of full-length products. This inefficiency has limited the broader utility of GCE in protein engineering and live-cell applications.
   </p>
@@ -84,9 +84,9 @@ export const components = {pre: CodeBlock, table: Table}
 ## Methods
 ### Plasmid Construction
 <section class="text-justify">
-    To construct the degradation-based circuit, we designed protein sequences containing a degron at the N-terminus, a TEV protease cleavage site, and a localization signal at the C-terminus. For the nuclear localization system, two plasmids were generated:
-    1. NLS-C: DHFR-TRAP-myc-tevs-V5-iRFP-EGFP-tevs-FLAG-NLS-Czipper-CTEV
-    2. NLS-N: Nzipper-NLS-NTEV
+  To construct the degradation-based circuit, we designed protein sequences containing a degron at the N-terminus, a TEV protease cleavage site, and a localization signal at the C-terminus. For the nuclear localization system, two plasmids were generated:
+  1. NLS-C: DHFR-TRAP-myc-tevs-V5-iRFP-EGFP-tevs-FLAG-NLS-Czipper-CTEV
+  2. NLS-N: Nzipper-NLS-NTEV
   <p class="mt-4">
     The degron (mutated E. coli DHFR) promotes ubiquitin-mediated degradation in mammalian cells. The nuclear localization signal (NLS) directs the protein into the nucleus via the importin α pathway. The Czipper/Nzipper leucine zipper sequences mediate dimerization and thereby reconstitute the split TEV protease, enabling site-specific cleavage (Fig. 1).
   </p>
@@ -114,9 +114,15 @@ Fluorescence imaging was performed at 24 h post-transfection using live HEK293T 
 </section>
 
 ## Results
-
+### Design of the Degradation-Based Circuit
 <section class="text-justify">
-  123
+  In conventional GCE systems, the amber stop codon (TAG) is reassigned to encode a noncanonical amino acid (ncAA). However, because TAG remains recognized by release factors, premature termination generates truncated proteins lacking C-terminal regions. To selectively eliminate these truncation products, we engineered a circuit in which (i) a degron was fused to the N-terminus, (ii) a localization signal and a protease cleavage site were fused to the C-terminus, and (iii) a split TEV protease was expressed in cells with the same localization pattern as the full-length protein.
+  <p class="mt-4">
+    In this design, full-length proteins are first recognized and cleaved by TEV, thereby removing the degron and localization sequences and restoring proper subcellular localization. In contrast, truncated proteins, lacking the C-terminal localization signal and protease site, remain degron-tagged and undergo proteasomal degradation (Fig. 1).
+  </p>
+  <p class="mt-4">
+    The iRFP-EGFP reporter system was used to monitor amber suppression efficiency. In cases of readthrough failure, cells displayed only far-red fluorescence. Successful ncAA incorporation produced dual fluorescence signals (far-red and green), allowing direct visualization of readthrough efficiency.
+  </p>
 </section>
 
 <Figure>
@@ -124,8 +130,13 @@ Fluorescence imaging was performed at 24 h post-transfection using live HEK293T 
   <span slot="caption">123</span>
 </Figure>
 
+### Correct Localization and Cleavage of Target Proteins
+
 <section class="text-justify">
-  123
+  To validate the design, HEK293T cells were transfected with pNLS-C, pNLS-N, and pPylRS-tRNA in the presence of ncAA. Live-cell imaging revealed widespread red fluorescence throughout the cytoplasm, while green fluorescence was primarily nuclear, consistent with nuclear localization of the full-length product (Fig. 2a).
+  <p class="mt-4">
+    Immunoblotting further demonstrated successful TEV-mediated cleavage. The expected cleavage fragments were observed: an N-terminal DHFR-TRAP-myc fragment and a C-terminal Flag-NLS-CTEV fragment (Fig. 2b,c). These results confirm that split TEV protease activity is reconstituted when its two halves are colocalized, enabling specific processing of the engineered substrates.
+  </p>
 </section>
 
 <Figure>
@@ -133,8 +144,19 @@ Fluorescence imaging was performed at 24 h post-transfection using live HEK293T 
   <span slot="caption">123</span>
 </Figure>
 
+### Elimination of Truncated Products by Alternative Localization Strategies
+
 <section class="text-justify">
-  123
+  To assess the generalizability of the truncation-elimination system, constructs with different localization signals were designed:
+  1. Nuclear localization (NLS)
+  2. Plasma membrane targeting (LCK signal peptide)
+  3. Nuclear export sequence (NES)
+  <p class="mt-4">
+    A control reporter plasmid (pcDNA3.1 v5-iRFP-EGFP(39TAG)) was used to establish baseline GCE efficiency.
+  </p>
+  <p class="mt-4">
+    Immunoblotting and quantitative analysis revealed that the NLS-based system was most effective. Compared with the control, the proportion of full-length proteins increased from ~29% to ~41-fold (1.4× increase), while truncated products decreased from ~74% to ~16% (4.6× reduction) (Fig. 3b–d). These findings indicate that localization signals can be tailored to optimize degradation of truncated proteins in different cellular contexts.
+  </p>
 </section>
 
 <Figure>
@@ -142,26 +164,18 @@ Fluorescence imaging was performed at 24 h post-transfection using live HEK293T 
   <span slot="caption">123</span>
 </Figure>
 
+### Temporal Regulation of Cleavage and Degradation Enhances Efficiency
 <section class="text-justify">
-  123
+  During initial testing, some full-length proteins underwent degradation before protease cleavage, reducing system efficiency. To overcome this, we applied TMP, which binds to the degron (mutated DHFR) and blocks its recognition by E3 ligases, thereby temporarily preventing degradation.
+  <p class="mt-4">
+    When TMP was added after transfection and removed at defined time points before sampling, we observed a time-dependent effect. The optimal improvement was achieved when TMP was removed 6 h before collection, allowing sufficient protease cleavage prior to degron-mediated degradation (Fig. 4b). This strategy of temporally separating cleavage and degradation significantly enhanced elimination of truncation products.
+  </p>
 </section>
 
 <Figure>
   <Image slot="figure" source={fig4} altText="123" />
   <span slot="caption">123</span>
 </Figure>
-
-## Heading levels
-
-Use headings to divide your content into sections.
-
-### Heading 3
-
-Go down a level to heading 3...
-
-#### Heading 4
-
-...and down again to heading 4.
 
 ## BibTeX citation
 
