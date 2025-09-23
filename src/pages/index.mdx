@@ -7,22 +7,13 @@ thumbnail: screenshot-light.png
 ---
 
 import Header from "../components/Header.astro";
-import Video from "../components/Video.astro";
 import HighlightedSection from "../components/HighlightedSection.astro";
 import SmallCaps from "../components/SmallCaps.astro";
 import Figure from "../components/Figure.astro";
 import Image from "../components/Image.astro";
-import TwoColumns from "../components/TwoColumns.astro";
-import YouTubeVideo from "../components/YouTubeVideo.astro";
 import LaTeX from "../components/LaTeX.astro";
 
-import { ImageComparison } from "../components/ImageComparison.tsx";
-
-import outside from "../assets/outside.mp4";
-import transformer from "../assets/transformer.webp";
 import Splat from "../components/Splat.tsx"
-import dogsDiffc from "../assets/dogs-diffc.png"
-import dogsTrue from "../assets/dogs-true.png"
 import fig1 from "../assets/fig1.png"
 import fig2 from "../assets/fig2.png"
 import fig3 from "../assets/fig3.png"
@@ -193,14 +184,3 @@ export const components = {pre: CodeBlock, table: Table}
       b. Quantification of bands shown in Fig. 4a.
   </div>
 </Figure>
-
-## BibTeX citation
-
-```bibtex
-@misc{roman2024academic,
-  author = "{Roman Hauksson}",
-  title = "Academic Project Page Template",
-  year = "2024",
-  howpublished = "\url{https://research-template.roman.technology}",
-}
-```
